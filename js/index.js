@@ -47,12 +47,13 @@ if (tipo == "bien cocido"){
 
         //Realizacion Desafio "Simulador Interactivo"
 
-        function pagoSeguroAutomotorSemestral() {
-            let entrada = +prompt("Bienvenido a su cotizador de seguros, ingrese monto mensual o semestral a calcular:");
+        function pagoSeguroAutomotorSemestral(entrada) {
+            
             for (let i= 6; i <= 18; i*1.21){
                 alert("Monto a depositar en "+i+" cuotas = "+entrada/i*1.21);
                 i+=6;
             }
         }
-        pagoSeguroAutomotorSemestral();
+        let entrada = +prompt("Bienvenido a su cotizador de seguros, ingrese monto mensual o semestral a calcular:");
+        pagoSeguroAutomotorSemestral(entrada);
 //el cliente podrá pagar su seguro mensual o semestral en hasta 18 cuotas con una taza del 21% de interes. 
