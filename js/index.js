@@ -1,51 +1,4 @@
-
-/* let numero = +(prompt('introduzca un numero'));
-let resultado = numero / 10;
-console.log(resultado); */
-
-
-/* EJERCICIO CON GRADOS DE TEMPERATURA
-Un programa donde el usuraio ingrese la temperatura en 
-Celcius y el se muestre la temperatura en Fahrenheit.
-
-F = (C * 1.8) + 32.
-*/
-
-
- //let celcius = parseInt(prompt('Ingrese los grados celcius'));
-
-//let fahrenheit = (celcius *1.8) + 32;
-
-//console.log(fahrenheit + "°F");/*
-
-//Condicion IF (= operador de asignacion, == operador de comparacion)
-/* let llueve = true;
-    if (llueve) {
-    console.log("Lleva Paraguas");
-} */
-
-//EJEMPLOS CON ELSE
-/*let modeloAuto = "vento"
-if (modeloAuto == "taos"){
-    console.log ("El modelo es un vento");
-
-} else{
-    console.log("El modelo NO es un vento")
-}*/
-
-//RECETA ARROZ
-
-/* let tipo = prompt("que tipo de arroz desea?: bien cocido o poco cocido");
-console.log (tipo == "bien cocido")
-
-if (tipo == "bien cocido"){
-    console.log("preprando arroz bien cocido");
-}else{
-        console.log("preparando arroz poco cocido");
-    } */
-
-
-        //Realizacion Desafio "Simulador Interactivo"
+       //Incorporando Arrays
 
         function pagoSeguroAutomotorSemestral(entrada) {
             
@@ -54,6 +7,35 @@ if (tipo == "bien cocido"){
                 i+=6;
             }
         }
-        let entrada = +prompt("Bienvenido a su cotizador de seguros, ingrese monto mensual o semestral a calcular:");
-        pagoSeguroAutomotorSemestral(entrada);
+        function pagoSeguroMensualConInteres(montoAPagar, cantidadDeMeses) {
+            const pagosARealizar = [];
+            let ultimoPago = montoAPagar;
+            for (let i = 0; i < cantidadDeMeses; i++) {
+                let nuevoMonto = Math.floor(ultimoPago + montoAPagar * 0.075);
+                pagosARealizar.push(nuevoMonto)
+                ultimoPago = nuevoMonto;
+            }
+            let mensaje = "Los montos de los pagos mensuales son los siguientes: \n";
+            console.log(pagosARealizar);
+            for(let j = 0; j < pagosARealizar.length; j++){
+                mensaje += "Mes "+(j+1)+" : $"+pagosARealizar[j]+"\n";
+            }
+            alert(mensaje);
+        }
+        
+        let entrada = prompt("Bienvenido a su cotizador de seguros: \n 1 - Calcular interes semestral. \n 2 - Calcular interes mensual (0.75% de interes por cada mes adicional)");
+        
+        
+        if (entrada == 1) {
+            const montoSemestral = prompt("Ingrese monto semestral a calcular:");
+            pagoSeguroAutomotorSemestral(montoSemestral);
+        } else if (entrada == 2) {
+            const monto = prompt("Ingrese monto mensual a calcular:");
+            const totalMeses = prompt("Ingrese la cantidad de meses a pagar:");
+            pagoSeguroMensualConInteres(monto, totalMeses);
+        }
+        
+
+
+
 //el cliente podrá pagar su seguro mensual o semestral en hasta 18 cuotas con una taza del 21% de interes. 
