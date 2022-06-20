@@ -4,19 +4,111 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cotizador</title>
+    <link rel="stylesheet" href="css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="estilos/main.css" />
     <script src="js/index.js"></script>
 </head>
 <body>
+<div>
+    <header>
+    <h1>
+        BIENVENIDO A SU COTIZADOR DE SEGUROS
+    </h1>
+    <p>
+        Nuestras coberturas están especialmente diseñadas para vos. Cotizá tu seguro online a continuacion:
+    </p>
+</header>
+    <section>
+        <h2>
+            VEHICULOS
+        </h2>
+        <form>
+            <div class="mb-3 row" >
+                <label
+                    for="exampleFormControlInput1"
+                    class="form-label col-sm-2"
+                    >MARCA</label
+                >
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        class="form-control col-sm-10"
+                        id="exampleFormControlInput1"
+                        placeholder="MARCA"
+                    />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label
+                    for="exampleFormControlInput1"
+                    class="form-label col-sm-2"
+                    >AÑO</label
+                >
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        class="form-control col-sm-10"
+                        id="exampleFormControlInput1"
+                        placeholder="AÑO"
+                    />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label
+                    for="exampleFormControlInput1"
+                    class="form-label col-sm-2"
+                    >MODELO</label
+                >
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        class="form-control col-sm-10"
+                        id="exampleFormControlInput1"
+                        placeholder="MODELO"
+                    />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label
+                    for="exampleFormControlInput1"
+                    class="form-label col-sm-2"
+                    >VERSION</label
+                >
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        class="form-control col-sm-10"
+                        id="exampleFormControlInput1"
+                        placeholder="VERSION"
+                    />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label
+                    for="exampleFormControlInput1"
+                    class="form-label col-sm-2"
+                    >PROVINCIA</label
+                >
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        class="form-control col-sm-10"
+                        id="exampleFormControlInput1"
+                        placeholder="PROVINCIA"
+                    />
+                </div>
+            </div>
+            <div>
+                
+                    <input class="btn btn-primary" type="submit" />
 
-    <script>
-        /*let celcius = parseInt(prompt('Ingrese los grados celcius'));
-        let fahrenheit = (celcius *1.8) + 32;
-        console.log(fahrenheit + "°F");
-
-        /*let numero = +(prompt('introduzca un numero'));
-    let resultado = numero / 10;
-    console.log(resultado);*/ 
-        </script>
+                    <input class="btn btn-secondary btn-block" type="reset"
+                    />
+                </div>
+            </div>
+        </form>
+</section>
+</div>
 </body>
 </html>
