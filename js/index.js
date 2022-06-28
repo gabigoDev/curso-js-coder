@@ -1,4 +1,4 @@
-       //Incorporando Arrays
+
 
         function pagoSeguroAutomotorSemestral(entrada) {
             
@@ -35,7 +35,16 @@
             pagoSeguroMensualConInteres(monto, totalMeses);
         }
         
+//agregando eventos
 
+const formulario = document.getElementById('form')
 
+formulario.addEventListener('submit', function(e){
 
-//el cliente podrá pagar su seguro mensual o semestral en hasta 18 cuotas con una taza del 21% de interes. 
+    e.preventDefault();
+    if (typeof foo !== 'undefined') {
+    }
+    let mail = document.getElementById('email-form').value
+    console.log(mail)
+
+} )
