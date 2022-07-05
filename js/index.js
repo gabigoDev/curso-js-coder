@@ -19,15 +19,6 @@ function pagoSeguroMensualConInteres(montoAPagar, cantidadDeMeses) {
 }
 //agregando eventos
 
-const formulario = document.getElementById("form");
-
-formulario.addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (typeof foo !== "undefined") {
-    }
-    let mail = document.getElementById("email-form").value;
-    console.log(mail);
-});
 
 const modalPoliza = new bootstrap.Modal("#cotizacion", {
     keyboard: false,
