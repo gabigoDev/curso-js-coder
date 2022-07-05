@@ -1,122 +1,153 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotizador</title>
-    <link rel="stylesheet" href="css/bootstrap.rtl.min.css" />
-    <link rel="stylesheet" href="estilos/main.css" />
-    <script src="js/index.js"></script>
-</head>
-<body>
-<div>
-    <header>
-    <h1>
-        BIENVENIDO A SU COTIZADOR DE SEGUROS
-    </h1>
-    <p>
-        Nuestras coberturas están especialmente diseñadas para vos. Cotizá tu seguro online a continuacion:
-    </p>
-</header>
-    <section>
-        <h2>
-            VEHICULOS
-        </h2>
-        <form>
-            <div class="mb-3 row" >
-                <label
-                    for="exampleFormControlInput1"
-                    class="form-label col-sm-2"
-                    >MARCA</label
-                >
-                <div class="col-sm-10">
-                    <input 
-                        type="text"
-                        class="form-control col-sm-10"
-                        id="exampleFormControlInput1"
-                        placeholder="MARCA"
-                    />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cotizador</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <h1>BIENVENIDO A SU COTIZADOR DE SEGUROS</h1>
+            <p>
+                Nuestras coberturas están especialmente diseñadas para vos.
+                Cotizá tu seguro online a continuacion:
+            </p>
+        </header>
+        <section>
+            <h2>VEHICULOS</h2>
+            <form action=" " id="formularioCotizador">
+                <div class="mb-3 row">
+                    <label
+                        for="exampleFormControlInput1"
+                        class="form-label col-sm-2"
+                        >MARCA</label
+                    >
+                    <div class="col-sm-10">
+                        <input
+                            type="text"
+                            class="form-control col-sm-10"
+                            id="inputMarca"
+                            placeholder="MARCA"
+                        />
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label
-                    for="exampleFormControlInput1"
-                    class="form-label col-sm-2"
-                    >AÑO</label
-                >
-                <div class="col-sm-10">
+                <div class="mb-3 row">
+                    <label
+                        for="exampleFormControlInput1"
+                        class="form-label col-sm-2"
+                        >AÑO</label
+                    >
+                    <div class="col-sm-10">
+                        <input
+                            type="number"
+                            class="form-control col-sm-10"
+                            id="inputAnio"
+                            placeholder="AÑO"
+                        />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label
+                        for="exampleFormControlInput1"
+                        class="form-label col-sm-2"
+                        >MODELO</label
+                    >
+                    <div class="col-sm-10">
+                        <input
+                            type="text"
+                            class="form-control col-sm-10"
+                            id="inputModelo"
+                            placeholder="MODELO"
+                        />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label
+                        for="exampleFormControlInput1"
+                        class="form-label col-sm-2"
+                        >VERSION</label
+                    >
+                    <div class="col-sm-10">
+                        <input
+                            type="text"
+                            class="form-control col-sm-10"
+                            id="inputVersion"
+                            placeholder="VERSION"
+                        />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label
+                        for="exampleFormControlInput1"
+                        class="form-label col-sm-2"
+                        >PROVINCIA</label
+                    >
+                    <div class="col-sm-10">
+                        <input
+                            type="text"
+                            class="form-control col-sm-10"
+                            id="inputProvincia"
+                            placeholder="PROVINCIA"
+                        />
+                    </div>
+                </div>
+                <div>
                     <input
-                        type="number"
-                        class="form-control col-sm-10"
-                        id="exampleFormControlInput1"
-                        placeholder="AÑO"
+                        class="btn btn-primary"
+                        type="submit"
+                        value="Cotizar"
+                        id="botonCotizar"
                     />
+                    <input class="btn btn-secondary btn-block" type="reset" />
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label
-                    for="exampleFormControlInput1"
-                    class="form-label col-sm-2"
-                    >MODELO</label
-                >
-                <div class="col-sm-10">
-                    <input
-                        type="text"
-                        class="form-control col-sm-10"
-                        id="exampleFormControlInput1"
-                        placeholder="MODELO"
-                    />
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label
-                    for="exampleFormControlInput1"
-                    class="form-label col-sm-2"
-                    >VERSION</label
-                >
-                <div class="col-sm-10">
-                    <input
-                        type="text"
-                        class="form-control col-sm-10"
-                        id="exampleFormControlInput1"
-                        placeholder="VERSION"
-                    />
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label
-                    for="exampleFormControlInput1"
-                    class="form-label col-sm-2"
-                    >PROVINCIA</label
-                >
-                <div class="col-sm-10">
-                    <input
-                        type="text"
-                        class="form-control col-sm-10"
-                        id="exampleFormControlInput1"
-                        placeholder="PROVINCIA"
-                    />
-                </div>
-            </div>
-            <div>
-                
-                    <input class="btn btn-primary" type="submit"/>
 
-                    <input class="btn btn-secondary btn-block" type="reset"
-                    />
+            </form>
+            <button id="verPolizaGuardada" class="btn btn-success">
+                Ver poliza guardada 
+            </button>
+            <!-- agregando eventos al form -->
+
+        </section>
+        <aside>
+            <div class="modal" id="cotizacion" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Los datos de su poliza son:</h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Marca: <span id="polizaMarca"></span></p>
+                            <p>Ano: <span id="polizaAnio"></span></p>
+                            <p>Modelo: <span id="polizaModelo"></span></p>
+                            <p>Version: <span id="polizaVersion"></span></p>
+                            <p>Provincia: <span id="polizaProvincia"></span></p>
+                            <p>Costo Mensual: $3600</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Cancelar
+                            </button>
+                            <button type="button" id="guardarPoliza" class="btn btn-primary">
+                                Confirmar Poliza
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-        
-        <<!-- agregando eventos al form -->
-        <form action="" id="form">
-            
-            <input type="email" id="email-form" placeholder="ingresa tu email">
-            <input type="submit" value="suscribete">
-            
-        </form>
-</section>
-</div>
-</body>
+        </aside>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="js/index.js"></script>
+    </body>
 </html>
