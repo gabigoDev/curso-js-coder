@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cotizador</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="estilos/main.css">
     </head>
     <body>
         <header>
@@ -17,7 +18,11 @@
         </header>
         <section>
             <h2>VEHICULOS</h2>
-            <form action=" " id="formularioCotizador">
+            <div class="alert alert-danger d-none" id="formularioValido" role="alert">
+                Para poder cotizar su póliza, deberá completar todos los campos.
+            </div>
+
+            <form action="" id="formularioCotizador" data-parsley-validate="">
                 <div class="mb-3 row">
                     <label
                         for="exampleFormControlInput1"
@@ -25,7 +30,7 @@
                         >MARCA</label
                     >
                     <div class="col-sm-10">
-                        <input
+                        <input required data-parsley-error-message="Campo incompleto"
                             type="text"
                             class="form-control col-sm-10"
                             id="inputMarca"
@@ -40,11 +45,12 @@
                         >AÑO</label
                     >
                     <div class="col-sm-10">
-                        <input
+                        <input required data-parsley-error-message="Campo incompleto"
                             type="number"
                             class="form-control col-sm-10"
                             id="inputAnio"
                             placeholder="AÑO"
+                            data-parsley-type="number"
                         />
                     </div>
                 </div>
@@ -55,7 +61,7 @@
                         >MODELO</label
                     >
                     <div class="col-sm-10">
-                        <input
+                        <input required data-parsley-error-message="Campo incompleto"
                             type="text"
                             class="form-control col-sm-10"
                             id="inputModelo"
@@ -70,7 +76,7 @@
                         >VERSION</label
                     >
                     <div class="col-sm-10">
-                        <input
+                        <input required data-parsley-error-message="Campo incompleto"
                             type="text"
                             class="form-control col-sm-10"
                             id="inputVersion"
@@ -85,7 +91,7 @@
                         >PROVINCIA</label
                     >
                     <div class="col-sm-10">
-                        <input
+                        <input required data-parsley-error-message="Campo incompleto"
                             type="text"
                             class="form-control col-sm-10"
                             id="inputProvincia"
@@ -94,7 +100,7 @@
                     </div>
                 </div>
                 <div>
-                    <input
+                    <input required data-parsley-error-message="Campo incompleto"
                         class="btn btn-primary"
                         type="submit"
                         value="Cotizar"
@@ -147,6 +153,8 @@
                 </div>
             </div>
         </aside>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <script src="js/index.js"></script>
     </body>

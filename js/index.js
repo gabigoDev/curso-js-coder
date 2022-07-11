@@ -19,7 +19,6 @@ function pagoSeguroMensualConInteres(montoAPagar, cantidadDeMeses) {
 }
 //agregando eventos
 
-
 const modalPoliza = new bootstrap.Modal("#cotizacion", {
     keyboard: false,
 });
@@ -36,63 +35,26 @@ const polizaModelo = document.getElementById("polizaModelo");
 const polizaVersion = document.getElementById("polizaVersion");
 const polizaProvincia = document.getElementById("polizaProvincia");
 
-const formularioCotizador = document.getElementById("formularioCotizador");
-formularioCotizador.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    if (!inputMarca.value) {
-        alert("Debe ingresar una marca");
-        return;
-    }
-    if (!inputAnio.value) {
-        alert("Debe ingresar un año");
-        return;
-    }
-    if (!inputModelo.value) {
-        alert("Debe ingresar un modelo");
-        return;
-    }
-    if (!inputVersion.value) {
-        alert("Debe ingresar una version");
-        return;
-    }
-    if (!inputProvincia.value) {
-        alert("Debe ingresar una provincia");
-        return;
-    }
-
-    modalPoliza.show();
-
-    console.log("Formulario correcto");
-
-
-    polizaMarca.innerText = inputMarca.value;
-    polizaAnio.innerText = inputAnio.value;
-    polizaModelo.innerText = inputVersion.value;
-    polizaVersion.innerText = inputVersion.value;
-    polizaProvincia.innerText = inputProvincia.value;
-});
 
 const guardarPoliza = document.getElementById("guardarPoliza");
 
-guardarPoliza.addEventListener('click', () => {
-
-    modalPoliza.hide()
+guardarPoliza.addEventListener("click", () => {
+    modalPoliza.hide();
     const datosPoliza = {
         marca: inputMarca.value,
         anio: inputAnio.value,
         modelo: inputModelo.value,
         version: inputVersion.value,
         provincia: inputProvincia.value,
-        costo: 3600
-    }
-    const datosJson = JSON.stringify(datosPoliza)
-    localStorage.setItem('ultimaPoliza', datosJson)
-})
+        costo: 3600,
+    };
+    const datosJson = JSON.stringify(datosPoliza);
+    localStorage.setItem("ultimaPoliza", datosJson);
+});
 const verPolizaGuardada = document.getElementById("verPolizaGuardada");
-verPolizaGuardada.addEventListener ('click', function () {
-    let datosPoliza = localStorage.getItem ('ultimaPoliza')
-    datosPoliza = JSON.parse(datosPoliza)
+verPolizaGuardada.addEventListener("click", function () {
+    let datosPoliza = localStorage.getItem("ultimaPoliza");
+    datosPoliza = JSON.parse(datosPoliza);
 
     polizaMarca.innerText = datosPoliza.marca;
     polizaAnio.innerText = datosPoliza.anio;
@@ -100,7 +62,24 @@ verPolizaGuardada.addEventListener ('click', function () {
     polizaVersion.innerText = datosPoliza.version;
     polizaProvincia.innerText = datosPoliza.provincia;
 
-    modalPoliza.show()
-
-})
-
+    modalPoliza.show();
+});
+//agregando libreria PARSLEY y jQuery (validacion de formulario)
+$(function () {
+    $("#formularioCotizador")
+        .parsley()
+        .on("field:validated", function () {
+            var ok = $(".parsley-error").length === 0;
+            $("#formularioValido").toggleClass("d-none", ok);
+        })
+        .on("form:submit", function (e) {
+            polizaMarca.innerText = inputMarca.value;
+            polizaAnio.innerText = inputAnio.value;
+            polizaModelo.innerText = inputVersion.value;
+            polizaVersion.innerText = inputVersion.value;
+            polizaProvincia.innerText = inputProvincia.value;
+            modalPoliza.show();
+            console.log("Formulario correcto");
+            return false;
+        });
+});
