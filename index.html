@@ -136,6 +136,28 @@
                             <p>Version: <span id="polizaVersion"></span></p>
                             <p>Provincia: <span id="polizaProvincia"></span></p>
                             <p>Costo Mensual: $3600</p>
+                            <hr>        
+                            <form id="formularioCorreo" data-parsley-validate="">
+                            <div class="mb-3 row">
+                                <label
+                                    for="exampleFormControlInput1"
+                                    class="form-label col-sm-6"
+                                    >CORREO ELECTRONICO</label
+                                >
+                                <div class="col-sm-6">
+                                    <input required 
+                                        data-parsley-error-message="Campo incompleto"
+                                        type="email"
+                                        class="form-control col-sm-10"
+                                        id="inputCorreo"
+                                        placeholder="CORREO"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary col-12" id="enviarCorreo">Enviar poliza por correo</button>
+                            </div>
+                        </form>
                         </div>
                         <div class="modal-footer">
                             <button

@@ -35,7 +35,6 @@ const polizaModelo = document.getElementById("polizaModelo");
 const polizaVersion = document.getElementById("polizaVersion");
 const polizaProvincia = document.getElementById("polizaProvincia");
 
-
 const guardarPoliza = document.getElementById("guardarPoliza");
 
 guardarPoliza.addEventListener("click", () => {
@@ -82,4 +81,46 @@ $(function () {
             console.log("Formulario correcto");
             return false;
         });
+
+        // Valido formulario de correo
+        $("#formularioCorreo").parsley()
+        .on("form:submit", function (e) {
+            enviarCorreo();
+            return false;
+        });
 });
+
+//Agregando Fetch
+const inputCorreo = document.getElementById("inputCorreo");
+
+function enviarCorreo() {
+    var data = {
+        service_id: "service_qi55ghg",
+        template_id: "template_hryk8o3",
+        user_id:'CSnur9VlFq1hKbzNB',    
+        template_params: {
+            marca: inputMarca.value,
+            anio: inputAnio.value,
+            modelo: inputModelo.value,
+            version: inputVersion.value,
+            provincia: inputProvincia.value,
+            enviar_a:inputCorreo.value
+        },
+    };
+    fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then((data) => data.text())
+        .then((text) => {
+            if (text !== "OK") {
+                throw new Error("La API respondio con error");
+            } else {
+                alert("Su póliza ha sido enviada con éxito ");
+            }
+        })
+        .catch((err) => console.error(err));
+};
