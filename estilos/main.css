@@ -1,0 +1,10 @@
+.parsley-error{
+    border-color: red !important;
+}
+
+.parsley-errors-list{
+    list-style: none;
+    margin-bottom: 0ch;
+    padding-left: 0.75em;
+    color: red;
+}
