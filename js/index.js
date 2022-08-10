@@ -14,10 +14,12 @@ let historialDePolizas = [];
 // Carga Dinamica de marca-modelo
 const selectMarca = document.getElementById("selectMarca");
 const selectModelo = document.getElementById("selectModelo");
+
 function cargarMarcas() {
     let marcasUnicas = [...new Set(modelos.map((modelo) => modelo.marca))];
     actualizarOption(marcasUnicas, selectMarca);
 }
+
 function cargarModelos() {
     let modelosFiltrados = modelos.filter(
         (modelo) => modelo.marca === selectMarca.value
@@ -27,10 +29,12 @@ function cargarModelos() {
         selectModelo
     );
 }
+
 function actualizarOption(opciones, select) {
     select.innerHTML = "";
     let opcionPorDefecto = document.createElement("option");
     opcionPorDefecto.textContent = "Selecciona una opcion.";
+    opcionPorDefecto.value = '';
     opcionPorDefecto.selected = true;
     opcionPorDefecto.disabled = true;
     select.append(opcionPorDefecto);
@@ -41,6 +45,7 @@ function actualizarOption(opciones, select) {
         select.append(nuevaOption);
     }
 }
+
 //agregando eventos
 const modalPoliza = new bootstrap.Modal("#cotizacion", {
     keyboard: false,
@@ -50,6 +55,8 @@ const botonCotizar = document.getElementById("botonCotizar");
 const selectorMeses = document.getElementById("selectorMeses");
 const enviarCorreoBtn = document.getElementById("enviarCorreoBtn");
 const inputCorreo = document.getElementById("inputCorreo");
+const guardarPoliza = document.getElementById("guardarPoliza");
+const borrarHistorial = document.getElementById("borrarHistorial");
 
 function cargarNuevaPoliza() {
     let poliza = crearPoliza();
@@ -58,9 +65,13 @@ function cargarNuevaPoliza() {
         mostrarPoliza(poliza);
     }
 }
+
 function crearPoliza() {
     let formularioCotizador = document.getElementById("formularioCotizador");
-    if (!formularioCotizador.checkValidity()) return false;
+    if (!formularioCotizador.checkValidity()) {
+        formularioCotizador.classList.add('was-validated')
+        return false;
+    }
     const datosFormulario = new FormData(formularioCotizador);
     const modelo = modelos.filter(
         (modelo) => modelo.nombre === datosFormulario.get("modelo")
@@ -72,6 +83,7 @@ function crearPoliza() {
     );
     return poliza;
 }
+
 function calcularMonto(poliza) {
     const meses = document.getElementById("selectorMeses").value ?? 1;
     if (!poliza) {
@@ -81,6 +93,7 @@ function calcularMonto(poliza) {
     document.getElementById("montoMensual").textContent = poliza.montoMensual;
     document.getElementById("montoTotal").textContent = poliza.montoTotal;
 }
+
 function mostrarPoliza(poliza) {
     datosPoliza.innerHTML = `<p><span class="text-primary">Marca</span>:${poliza.modelo.marca}</p>
                             <p><span class="text-primary">Modelo</span>:${poliza.modelo.nombre}</p>
@@ -111,20 +124,26 @@ function confirmarPoliza() {
     historialDePolizas.push(poliza);
     const datosJson = JSON.stringify(historialDePolizas);
     localStorage.setItem("historialDePolizas", datosJson);
-    actualizarTabla ();
+    actualizarTabla();
     modalPoliza.hide();
 }
-function actualizarTabla (){
+
+function actualizarTabla() {
     let tabla = document.getElementById("tbody")
     tabla.innerHTML = ""
-    for (let poliza of historialDePolizas){
-        cargarPolizaEnTabla (poliza)
+    for (let poliza of historialDePolizas) {
+        cargarPolizaEnTabla(poliza)
     }
 }
 
 
 //Agregando Fetch (Envio de correo)
 function enviarCorreo() {
+    let formularioCorreo = document.getElementById("formularioCorreo");
+    if (!formularioCorreo.checkValidity()) {
+        formularioCorreo.classList.add('was-validated')
+        return false;
+    }
     let poliza = crearPoliza();
     var data = {
         service_id: "service_qi55ghg",
@@ -155,6 +174,7 @@ function enviarCorreo() {
         })
         .catch((err) => console.error(err));
 }
+
 // Cargo eventos
 (function () {
     cargarMarcas();
@@ -165,14 +185,14 @@ function enviarCorreo() {
     guardarPoliza.addEventListener("click", confirmarPoliza);
     borrarHistorial.addEventListener("click", () => {
         localStorage.removeItem("historialDePolizas");
-        historialDePolizas=[];
+        historialDePolizas = [];
         actualizarTabla()
 
-});
+    });
     historialDePolizas = JSON.parse(
         localStorage.getItem("historialDePolizas") ?? "[]"
     );
-    if(historialDePolizas){
+    if (historialDePolizas) {
         actualizarTabla()
     }
 })();
