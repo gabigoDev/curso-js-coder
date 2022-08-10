@@ -30,28 +30,13 @@
                         >MARCA</label
                     >
                     <div class="col-sm-10">
-                        <input required data-parsley-error-message="Campo incompleto"
-                            type="text"
-                            class="form-control col-sm-10"
-                            id="inputMarca"
-                            placeholder="MARCA"
-                        />
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label
-                        for="exampleFormControlInput1"
-                        class="form-label col-sm-2"
-                        >AÑO</label
+                        <select required
+                            class="form-select col-sm-10"
+                            id="selectMarca"
+                            name="marca"
                     >
-                    <div class="col-sm-10">
-                        <input required data-parsley-error-message="Campo incompleto"
-                            type="number"
-                            class="form-control col-sm-10"
-                            id="inputAnio"
-                            placeholder="AÑO"
-                            data-parsley-type="number"
-                        />
+                    <option selected disabled>Selecciona una opcion.</option>
+                </select>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -61,26 +46,31 @@
                         >MODELO</label
                     >
                     <div class="col-sm-10">
-                        <input required data-parsley-error-message="Campo incompleto"
-                            type="text"
-                            class="form-control col-sm-10"
-                            id="inputModelo"
-                            placeholder="MODELO"
-                        />
+                        <select required 
+                            class="form-select col-sm-10"
+                            id="selectModelo"
+                            name="modelo"
+                        >
+                        <option selected value="">Selecciona una opcion.</option>
+                    </select>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label
                         for="exampleFormControlInput1"
                         class="form-label col-sm-2"
-                        >VERSION</label
+                        >AÑO</label
                     >
                     <div class="col-sm-10">
-                        <input required data-parsley-error-message="Campo incompleto"
-                            type="text"
+                        <input required
+                            type="number"
+                            min="1970"
+                            max="2022"
                             class="form-control col-sm-10"
-                            id="inputVersion"
-                            placeholder="VERSION"
+                            id="inputAnio"
+                            placeholder="AÑO"
+                            name="anio"
+                            data-parsley-type="number"
                         />
                     </div>
                 </div>
@@ -91,18 +81,44 @@
                         >PROVINCIA</label
                     >
                     <div class="col-sm-10">
-                        <input required data-parsley-error-message="Campo incompleto"
+                        <select required data-parsley-error-message="Campo incompleto"
                             type="text"
-                            class="form-control col-sm-10"
+                            class="form-select col-sm-10"
                             id="inputProvincia"
+                            name="provincia"
                             placeholder="PROVINCIA"
-                        />
+                        >    
+                        <option selected value="">Selecciona una opcion.</option>
+                        <option value="Tierra del Fuego">Tierra del Fuego</option> 
+                        <option value="Chubut">Chubut</option>
+                        <option value="Santa Cruz">Santa Cruz</option>
+                        <option value="Rio Negro">Rio Negro</option>
+                        <option value="Neuquen">Neuquen</option>
+                        <option value="Mendoza">Mendoza</option>
+                        <option value="La Pampa">La Pampa</option>
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="San Luis">San Luis</option>
+                        <option value="Cordoba">Cordoba</option>
+                        <option value="San Juan">San Juan</option>
+                        <option value="La Rioja">La Rioja</option>
+                        <option value="Tucuman">Tucuman</option>
+                        <option value="Santiago del Estero">Santiago del Estero</option>
+                        <option value="Catamarca">Catamarca</option>
+                        <option value="Santa Fe">Santa Fe</option>
+                        <option value="Corrientes">Corrientes</option>
+                        <option value="Misiones">Misiones</option>
+                        <option value="Entre Rios">Entre Rios</option>
+                        <option value="Formosa">Formosa</option>
+                        <option value="Salta">Salta</option>
+                        <option value="Jujuy">Jujuy</option>
+                        <option value="Chaco">Chaco</option>
+                    </select>
                     </div>
                 </div>
                 <div>
-                    <input required data-parsley-error-message="Campo incompleto"
+                    <input 
                         class="btn btn-primary"
-                        type="submit"
+                        type="button"
                         value="Cotizar"
                         id="botonCotizar"
                     />
@@ -110,11 +126,29 @@
                 </div>
 
             </form>
-            <button id="verPolizaGuardada" class="btn btn-success">
-                Ver poliza guardada 
-            </button>
             <!-- agregando eventos al form -->
+            <div class="m-4 d-flex justify-content-between">
+                <h2>
+                    Historial de polizas
+                </h2>
+                <button class="btn btn-danger " id="borrarHistorial">Borrar Historial</button>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>Marca</td>
+                    <td>Modelo</td>
+                    <td>Año</td>
+                    <td>Monto Mensual</td>
+                    <td>Monto Total</td>
+                    <td>Cuotas</td>
+                    <td>Provincia</td>
+                </tr>
+            </thead>
+            <tbody id="tbody">
 
+            </tbody>
+            </table>
         </section>
         <aside>
             <div class="modal" id="cotizacion" tabindex="-1">
@@ -130,12 +164,25 @@
                             ></button>
                         </div>
                         <div class="modal-body">
-                            <p>Marca: <span id="polizaMarca"></span></p>
-                            <p>Ano: <span id="polizaAnio"></span></p>
-                            <p>Modelo: <span id="polizaModelo"></span></p>
-                            <p>Version: <span id="polizaVersion"></span></p>
-                            <p>Provincia: <span id="polizaProvincia"></span></p>
-                            <p>Costo Mensual: $3600</p>
+                            <div class="row">
+                                <label
+                                for="selectorMeses"
+                                class="form-label col-sm-2"
+                                >Periodo:</label>
+                                <select name="selectorMeses" class="col-12 form-select" id="selectorMeses">
+                                    <option value="1" selected>Mensual</option>
+                                    <option value="4">Cuatrimestral</option>
+                                    <option value="6">Semestral</option>
+                                    <option value="12">Anual</option>
+                                </select>
+                            </div>
+                            <hr>
+                            <div class="row" id="datosPoliza"></div>
+                            <div class="row" id="">
+                                <p><span class="text-primary">Monto Mensual</span>: $<span id="montoMensual"></span></p>
+                                <p><span class="text-primary">Monto Total</span>: $<span id="montoTotal"></span></p>
+                            </div>
+
                             <hr>        
                             <form id="formularioCorreo" data-parsley-validate="">
                             <div class="mb-3 row">
@@ -146,7 +193,6 @@
                                 >
                                 <div class="col-sm-6">
                                     <input required 
-                                        data-parsley-error-message="Campo incompleto"
                                         type="email"
                                         class="form-control col-sm-10"
                                         id="inputCorreo"
@@ -155,7 +201,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button class="btn btn-primary col-12" id="enviarCorreo">Enviar poliza por correo</button>
+                                <button class="btn btn-primary col-12" type="button" id="enviarCorreoBtn">Enviar poliza por correo</button>
                             </div>
                         </form>
                         </div>
@@ -178,6 +224,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="js/modelo.js"></script>
         <script src="js/index.js"></script>
     </body>
 </html>
